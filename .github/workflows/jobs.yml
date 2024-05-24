@@ -1,0 +1,42 @@
+name: Sequential Jobs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run: echo "Running Job 1"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 2
+        run: echo "Running Job 2"
+
+  job3:
+    needs: job2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 3
+        run: echo "Running Job 3"
+
+  job4:
+    needs: job3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 4
+        run: echo "Running Job 4"
+
+  job5:
+    needs: job4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 5
+        run: echo "Running Job 5"
